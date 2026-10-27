@@ -480,19 +480,33 @@
       background: linear-gradient(130deg, #151c35, #0c1224);
     }
 
-    .creator-mark {
-      display: grid;
-      place-items: center;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 1px solid rgba(112, 225, 245, .45);
-      background: radial-gradient(circle, #343e79, #111629 75%);
-      box-shadow: 0 0 35px rgba(112, 225, 245, .12);
-      font-size: 27px;
-      font-weight: 900;
-      color: var(--cyan);
+    .creator-photo {
+      position: relative;
+      width: 220px;
+      aspect-ratio: 3 / 4;
+      padding: 5px;
+      overflow: hidden;
+      border-radius: 22px;
+      background: linear-gradient(145deg, var(--cyan), var(--accent), #a66cff);
+      box-shadow: 0 0 35px rgba(112, 225, 245, .16);
+      transition: transform .4s ease, box-shadow .4s ease;
     }
+
+    .creator-photo:hover {
+      transform: translateY(-5px) scale(1.015);
+      box-shadow: 0 15px 45px rgba(112, 225, 245, .24);
+    }
+
+    .creator-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 17px;
+    }
+
+    .creator-info { min-width: 0; }
 
     .creator-card h3 {
       font-size: 25px;
@@ -635,7 +649,9 @@
       .card { min-height: auto; }
       .manifesto { padding: 35px 23px; }
       .creator-card { grid-template-columns: 1fr; padding: 25px; }
-      .creator-mark { width: 75px; height: 75px; }
+      .creator-photo { width: min(100%, 260px); margin-inline: auto; }
+      .creator-info { text-align: center; }
+      .creator-info .social-links { justify-content: center; }
       .footer-grid { grid-template-columns: 1fr; gap: 25px; }
       .footer-bottom { flex-direction: column; }
     }
@@ -838,11 +854,22 @@
         </div>
 
         <div class="creator-card reveal">
-          <div class="creator-mark" aria-label="Santosh Ahir initials">SA</div>
-          <div>
+          <div class="creator-photo">
+            <img
+              src="./IMG-20260520-WA0050%202.jpg"
+              alt="Santosh Ahir, founder of SHUNYASEINFINITY"
+              loading="lazy"
+              decoding="async"
+              width="900"
+              height="1200"
+            >
+          </div>
+          <div class="creator-info">
             <h3>Santosh Ahir</h3>
             <p>
               Founder & Creator of SHUNYASEINFINITY
+              <br>
+              Computer Science & Engineering · AI & Machine Learning
               <br>
               Exploring technology, knowledge, science and new ideas.
             </p>
