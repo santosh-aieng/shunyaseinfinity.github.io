@@ -4,180 +4,985 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SHUNYASEINFINITY — From Ancient Wisdom to Infinite Discovery. Explore knowledge, science, mathematics and timeless wisdom.">
-  <title>SHUNYASEINFINITY | Infinite Discovery</title>
+  <meta name="theme-color" content="#080b16">
+  <meta name="description" content="SHUNYASEINFINITY by Santosh Ahir — From Ancient Wisdom to Infinite Discovery. Explore mathematics, science, philosophy and the universe.">
+  <meta property="og:title" content="SHUNYASEINFINITY | Infinite Discovery">
+  <meta property="og:description" content="A universe of knowledge, timeless wisdom and future possibilities. Created by Santosh Ahir.">
+  <title>SHUNYASEINFINITY — Infinite Discovery</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #080b16;
-      color: #f5f7ff;
-      line-height: 1.7;
+    :root {
+      --bg: #080b16;
+      --surface: #111629;
+      --text: #f5f7ff;
+      --muted: #b9bfd5;
+      --accent: #9caaff;
+      --cyan: #70e1f5;
+      --border: rgba(166, 180, 255, .17);
+      --max-width: 1200px;
     }
-    header {
-      padding: 20px 7%;
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      background:
+        radial-gradient(ellipse at 15% 10%, #20295b 0, transparent 35%),
+        radial-gradient(ellipse at 90% 55%, #102c45 0, transparent 32%),
+        radial-gradient(ellipse at 45% 100%, #211544 0, transparent 35%);
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(var(--max-width), 100% - 48px);
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 16px;
+      background: white;
+      color: black;
+      border-radius: 8px;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 11, 22, .78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-wrap {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid #252b42;
+      gap: 24px;
     }
-    .logo { font-size: 21px; font-weight: 800; letter-spacing: 1px; }
-    .logo span { color: #8e9cff; }
-    nav a {
-      color: #c9cce0;
+
+    .logo {
       text-decoration: none;
-      margin-left: 18px;
-      font-size: 14px;
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
     }
-    nav a:hover { color: #a9b4ff; }
-    .hero {
-      min-height: 75vh;
-      padding: 100px 8%;
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: radial-gradient(ellipse at 80% 20%, #26336b 0%, transparent 48%);
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 25px;
     }
-    .tag {
-      color: #aab5ff;
+
+    .nav-links a {
+      color: #cbd0e4;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-links .nav-contact {
+      padding: 8px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 790px;
+      min-height: min(850px, calc(100svh - 76px));
+      display: flex;
+      align-items: center;
+      padding: 100px 0;
+      isolation: isolate;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 45px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 3px;
-      font-size: 12px;
-      margin-bottom: 22px;
+      margin-bottom: 25px;
     }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #70e1f5;
+      box-shadow: 0 0 15px #70e1f5;
+      animation: pulse 2s infinite;
+    }
+
     h1 {
-      font-size: clamp(42px, 8vw, 82px);
+      font-size: clamp(43px, 6.5vw, 83px);
       line-height: 1.08;
-      max-width: 850px;
+      letter-spacing: -3px;
+      max-width: 780px;
       overflow-wrap: anywhere;
     }
-    h1 span {
-      color: #9caaff;
+
+    .gradient-text {
+      color: var(--accent);
+      background: linear-gradient(100deg, #aab6ff, #70e1f5, #d6b5ff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-shift 8s ease infinite;
     }
-    .hero p {
-      max-width: 650px;
-      color: #c0c5da;
-      margin: 24px 0 30px;
-      font-size: 18px;
+
+    .hero-copy {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+      margin: 26px 0 32px;
     }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
     .btn {
-      display: inline-block;
-      width: fit-content;
-      padding: 12px 22px;
-      border-radius: 8px;
-      background: #899aff;
-      color: #080b16;
-      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 21px;
+      border-radius: 10px;
       text-decoration: none;
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform .25s ease, box-shadow .25s ease,
+                  border-color .25s ease;
     }
-    section { padding: 70px 8%; }
-    h2 { font-size: 32px; margin-bottom: 12px; }
-    .intro { color: #b9bfd5; max-width: 700px; margin-bottom: 30px; }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-primary {
+      color: #080b16;
+      background: linear-gradient(110deg, #aab6ff, #70e1f5);
+      box-shadow: 0 8px 35px rgba(112, 225, 245, .13);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 42px rgba(112, 225, 245, .27);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, .025);
+    }
+
+    /* CSS-only cosmic visual */
+    .cosmos {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+      justify-self: center;
+      perspective: 1000px;
+    }
+
+    .cosmos::before,
+    .cosmos::after {
+      content: "";
+      position: absolute;
+      width: 72%;
+      height: 72%;
+      border: 1px solid rgba(156, 170, 255, .3);
+      border-radius: 50%;
+      transform: rotateX(65deg) rotateZ(-25deg);
+      animation: orbit 18s linear infinite;
+    }
+
+    .cosmos::after {
+      width: 90%;
+      height: 90%;
+      border-color: rgba(112, 225, 245, .2);
+      transform: rotateX(68deg) rotateZ(35deg);
+      animation-duration: 24s;
+      animation-direction: reverse;
+    }
+
+    .cosmic-core {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 48%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%,
+        #d4e2ff 0, #8d9eff 12%, #5156a8 34%,
+        #1b234f 64%, #0a1026 80%);
+      box-shadow:
+        0 0 35px rgba(142, 156, 255, .5),
+        0 0 100px rgba(101, 126, 255, .23),
+        inset -20px -20px 50px rgba(0, 0, 0, .65);
+      animation: float 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+
+    .core-symbol {
+      font-size: clamp(46px, 7vw, 75px);
+      font-weight: 300;
+      color: #fff;
+      text-shadow: 0 0 25px rgba(255, 255, 255, .7);
+    }
+
+    .orbit-point {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--cyan);
+      top: 13%;
+      left: 27%;
+    }
+
+    .cosmic-label {
+      position: absolute;
+      bottom: 7%;
+      text-align: center;
+      color: #bfcaff;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* Sections */
+    section.content-section { padding: 100px 0; }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 30px;
+      perspective: 1200px;
     }
+
     .card {
-      border: 1px solid #29304a;
-      background: #111629;
-      border-radius: 14px;
-      padding: 25px;
+      position: relative;
+      min-height: 250px;
+      padding: 27px 23px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(145deg,
+        rgba(22, 29, 54, .93), rgba(12, 17, 33, .96));
+      transform-style: preserve-3d;
+      transition: transform .18s ease, border-color .3s ease,
+                  box-shadow .3s ease;
+      will-change: transform;
     }
-    .card .symbol { font-size: 30px; margin-bottom: 12px; }
-    .card h3 { margin-bottom: 8px; }
-    .card p { color: #b9bfd5; font-size: 14px; }
-    .about { background: #0d1222; }
-    footer {
-      padding: 30px 8%;
-      border-top: 1px solid #252b42;
-      color: #aeb4ca;
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      top: -100px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(112, 225, 245, .15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      border-color: rgba(112, 225, 245, .55);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .22);
+    }
+
+    .symbol {
+      display: grid;
+      place-items: center;
+      width: 53px;
+      height: 53px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(156, 170, 255, .09);
+      font-size: 27px;
+      margin-bottom: 22px;
+      transform: translateZ(20px);
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+      transform: translateZ(15px);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      transform: translateZ(10px);
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--cyan);
       font-size: 13px;
-      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
     }
+
+    /* Philosophy banner */
+    .manifesto {
+      position: relative;
+      overflow: hidden;
+      padding: 65px 35px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(88, 102, 205, .25), transparent 50%),
+        linear-gradient(135deg, #111a32, #101124);
+    }
+
+    .manifesto h2 { max-width: 750px; }
+
+    .manifesto p {
+      max-width: 700px;
+      color: var(--muted);
+      margin-bottom: 23px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+    }
+
+    .principle {
+      padding: 17px 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .025);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .principle span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Creator */
+    .creator-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 25px;
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: linear-gradient(130deg, #151c35, #0c1224);
+    }
+
+    .creator-mark {
+      display: grid;
+      place-items: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid rgba(112, 225, 245, .45);
+      background: radial-gradient(circle, #343e79, #111629 75%);
+      box-shadow: 0 0 35px rgba(112, 225, 245, .12);
+      font-size: 27px;
+      font-weight: 900;
+      color: var(--cyan);
+    }
+
+    .creator-card h3 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .creator-card p {
+      color: var(--muted);
+      margin-bottom: 17px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+
+    .social-links a:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 30px;
+      padding: 48px 0 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(5, 8, 17, .5);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 35px;
+      padding-bottom: 32px;
+    }
+
+    .footer-brand p {
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 12px;
+    }
+
+    .footer-links h3 {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .footer-links a {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 7px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: var(--cyan); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 19px;
+      border-top: 1px solid var(--border);
+      color: #929ab4;
+      font-size: 12px;
+    }
+
+    .footer-bottom strong { color: var(--text); }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotateY(-8deg); }
+      50% { transform: translateY(-15px) rotateY(8deg); }
+    }
+
+    @keyframes orbit {
+      from { rotate: 0deg; }
+      to { rotate: 360deg; }
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @media (max-width: 950px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .cosmos { max-width: 300px; margin-top: 30px; }
+      .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+    }
+
     @media (max-width: 600px) {
-      header { align-items: flex-start; }
-      nav { display: flex; flex-wrap: wrap; gap: 12px; }
-      nav a { margin: 0; }
-      .hero { min-height: 65vh; padding: 75px 7%; }
-      section { padding: 55px 7%; }
+      .container { width: calc(100% - 32px); }
+      .nav-wrap { padding: 14px 0; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: 12px; }
+      .hero { padding: 70px 0; }
+      h1 { letter-spacing: -1.5px; }
+      section.content-section { padding: 65px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .manifesto { padding: 35px 23px; }
+      .creator-card { grid-template-columns: 1fr; padding: 25px; }
+      .creator-mark { width: 75px; height: 75px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 25px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">SHUNYA<span>SE</span>INFINITY</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
-    </nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home" aria-label="SHUNYASEINFINITY home">
+        SHUNYA<span>SE</span>INFINITY
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#explore">Explore</a>
+        <a href="#about">About</a>
+        <a href="#creator">Creator</a>
+        <a class="nav-contact" href="#contact">Connect ↗</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero" id="home">
-      <div class="tag">Ancient Wisdom · Modern Discovery</div>
-      <h1>From Ancient Wisdom to <span>Infinite Discovery.</span></h1>
-      <p>
-        A journey through timeless Indian knowledge, mathematics,
-        science, philosophy and the mysteries of our universe.
-        Learn, question and explore beyond boundaries.
-      </p>
-      <a class="btn" href="#explore">Begin Exploring ↗</a>
-    </section>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            Ancient Wisdom · Modern Discovery
+          </div>
 
-    <section id="explore">
-      <h2>Explore Knowledge</h2>
-      <p class="intro">
-        Every great discovery begins with a question.
-        Explore the ideas that connect our past with our future.
-      </p>
-      <div class="cards">
-        <article class="card">
-          <div class="symbol">📜</div>
-          <h3>Ancient Wisdom</h3>
-          <p>Discover Indian philosophical traditions, ancient texts and timeless ideas.</p>
-        </article>
-        <article class="card">
-          <div class="symbol">∞</div>
-          <h3>Mathematics</h3>
-          <p>Explore numbers, patterns, logic and the mathematical ideas shaping our world.</p>
-        </article>
-        <article class="card">
-          <div class="symbol">🔭</div>
-          <h3>Science & Universe</h3>
-          <p>Question the unknown and explore scientific discoveries about our universe.</p>
-        </article>
-        <article class="card">
-          <div class="symbol">💡</div>
-          <h3>Ideas & Discovery</h3>
-          <p>Connect curiosity, critical thinking and new perspectives to discover more.</p>
-        </article>
+          <h1>
+            From Ancient Wisdom to
+            <span class="gradient-text">Infinite Discovery.</span>
+          </h1>
+
+          <p class="hero-copy">
+            A journey through timeless Indian knowledge, mathematics,
+            science, philosophy and the mysteries of our universe.
+            Learn, question and explore beyond boundaries.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#explore">
+              Begin Exploring <span aria-hidden="true">↗</span>
+            </a>
+            <a class="btn btn-secondary" href="#about">
+              Discover Our Mission
+            </a>
+          </div>
+        </div>
+
+        <div class="cosmos" aria-label="An animated cosmic infinity symbol">
+          <div class="cosmic-core">
+            <span class="core-symbol" aria-hidden="true">∞</span>
+          </div>
+          <span class="orbit-point" aria-hidden="true"></span>
+          <div class="cosmic-label">Beyond Every Boundary</div>
+        </div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <h2>About SHUNYASEINFINITY</h2>
-      <p class="intro">
-        SHUNYASEINFINITY is a knowledge-driven project dedicated
-        to exploring the relationship between ancient wisdom,
-        scientific thinking and infinite human curiosity.
-        Our mission is to learn from the past while discovering
-        new possibilities for the future.
-      </p>
-      <p><strong>Our motto:</strong> From Ancient Wisdom to Infinite Discovery.</p>
+    <section class="content-section" id="explore">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-kicker">The Knowledge Universe</div>
+          <h2>Explore the Infinite.</h2>
+          <p class="intro">
+            Every great discovery begins with a question.
+            Explore the ideas that connect our past with our future.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="symbol" aria-hidden="true">📜</div>
+            <h3>Ancient Wisdom</h3>
+            <p>
+              Discover Indian philosophical traditions, ancient texts
+              and timeless ideas through thoughtful exploration.
+            </p>
+            <a class="card-link" href="#about">Explore the past ↗</a>
+          </article>
+
+          <article class="card reveal">
+            <div class="symbol" aria-hidden="true">∞</div>
+            <h3>Mathematics</h3>
+            <p>
+              Explore numbers, patterns, logic and mathematical ideas
+              that help us understand the world.
+            </p>
+            <a class="card-link" href="#about">Discover patterns ↗</a>
+          </article>
+
+          <article class="card reveal">
+            <div class="symbol" aria-hidden="true">🔭</div>
+            <h3>Science & Universe</h3>
+            <p>
+              Question the unknown and explore scientific discoveries
+              about space, nature and reality.
+            </p>
+            <a class="card-link" href="#about">Look beyond ↗</a>
+          </article>
+
+          <article class="card reveal">
+            <div class="symbol" aria-hidden="true">💡</div>
+            <h3>Ideas & Discovery</h3>
+            <p>
+              Connect curiosity, critical thinking and new perspectives
+              to uncover possibilities.
+            </p>
+            <a class="card-link" href="#creator">Meet the creator ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="about">
+      <div class="container">
+        <div class="manifesto reveal">
+          <div class="section-kicker">Our Philosophy</div>
+          <h2>Knowledge has no final boundary. <span class="gradient-text">Curiosity has no end.</span></h2>
+          <p>
+            SHUNYASEINFINITY is a knowledge-driven initiative exploring
+            the connections between ancient wisdom, scientific thinking
+            and the infinite possibilities of human curiosity.
+          </p>
+          <a class="btn btn-primary" href="#creator">
+            Discover Our Story ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <div class="section-kicker">Who We Are</div>
+          <h2>Where timeless wisdom meets tomorrow.</h2>
+          <p>
+            SHUNYASEINFINITY is built around a simple idea:
+            ask better questions, seek reliable knowledge and remain
+            curious about the universe.
+          </p>
+          <p>
+            We value the lessons of history while embracing evidence,
+            logic, scientific inquiry and new ways of thinking.
+            Our goal is to make the journey of discovery meaningful
+            and accessible.
+          </p>
+        </div>
+
+        <div class="principles reveal">
+          <div class="principle">
+            <strong>01 — Curiosity</strong>
+            <span>Ask questions. Challenge assumptions. Keep exploring.</span>
+          </div>
+          <div class="principle">
+            <strong>02 — Knowledge</strong>
+            <span>Learn from history, research and scientific reasoning.</span>
+          </div>
+          <div class="principle">
+            <strong>03 — Discovery</strong>
+            <span>Connect ideas to uncover new possibilities.</span>
+          </div>
+          <div class="principle">
+            <strong>04 — Infinity</strong>
+            <span>Stay open to learning beyond what we already know.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="creator">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-kicker">Behind the Vision</div>
+          <h2>Meet the Creator.</h2>
+          <p class="intro">
+            The person behind SHUNYASEINFINITY and its journey
+            from ancient wisdom to infinite discovery.
+          </p>
+        </div>
+
+        <div class="creator-card reveal">
+          <div class="creator-mark" aria-label="Santosh Ahir initials">SA</div>
+          <div>
+            <h3>Santosh Ahir</h3>
+            <p>
+              Founder & Creator of SHUNYASEINFINITY
+              <br>
+              Exploring technology, knowledge, science and new ideas.
+            </p>
+
+            <div class="social-links">
+              <a href="https://www.instagram.com/just_smile.28/"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Instagram profile">
+                Instagram ↗
+              </a>
+
+              <a href="https://github.com/santosh-aieng"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="GitHub profile">
+                GitHub ↗
+              </a>
+
+              <a href="mailto:contact@shunyaseinfinity.software">
+                Email ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="container">
+        <div class="manifesto reveal">
+          <div class="section-kicker">Stay Curious</div>
+          <h2>Every connection begins with an idea.</h2>
+          <p>
+            Have a question, an idea or a project in mind?
+            Connect with the creator and continue the journey.
+          </p>
+          <a class="btn btn-primary"
+             href="mailto:contact@shunyaseinfinity.software">
+            Get in Touch ↗
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    © <span id="year"></span> SHUNYASEINFINITY. Built for curious minds.
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="logo" href="#home">
+            SHUNYA<span>SE</span>INFINITY
+          </a>
+          <p>
+            From Ancient Wisdom to Infinite Discovery.
+            A universe of knowledge, curiosity and possibilities.
+          </p>
+          <p>Created with purpose by Santosh Ahir.</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Connect With Me</h3>
+
+          <a href="https://www.instagram.com/just_smile.28/"
+             target="_blank" rel="noopener noreferrer">
+            Instagram · @just_smile.28 ↗
+          </a>
+
+          <a href="mailto:contact@shunyaseinfinity.software">
+            Email · contact@shunyaseinfinity.software
+          </a>
+
+          <a href="https://github.com/santosh-aieng"
+             target="_blank" rel="noopener noreferrer">
+            GitHub · santosh-aieng ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © <span id="year"></span>
+          <strong>SHUNYASEINFINITY</strong>.
+          All rights reserved.
+        </p>
+        <p>Built for curious minds. Designed for infinite discovery.</p>
+      </div>
+    </div>
   </footer>
+
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    "use strict";
+
+    // Automatically update the copyright year.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Reveal sections as they enter the viewport.
+    const revealElements = document.querySelectorAll(".reveal");
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if ("IntersectionObserver" in window && !reducedMotion) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
+
+    // Interactive 3D card tilt on pointer devices.
+    const finePointer = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+    if (finePointer && !reducedMotion) {
+      document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("pointermove", event => {
+          const rect = card.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const y = (event.clientY - rect.top) / rect.height;
+
+          const rotateY = (x - 0.5) * 9;
+          const rotateX = (0.5 - y) * 9;
+
+          card.style.transform =
+            `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+        });
+
+        card.addEventListener("pointerleave", () => {
+          card.style.transform = "";
+        });
+      });
+    }
   </script>
 </body>
 </html>
